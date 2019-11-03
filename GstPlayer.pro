@@ -4,9 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core gui widgets multimedia multimediawidgets
 
 TARGET = GstPlayer
 TEMPLATE = app
@@ -28,11 +26,8 @@ CONFIG += c++11 \
 PKGCONFIG += gstreamer-1.0 \
         gstreamer-video-1.0
 
-HEADERS += mainwindow.cpp
-
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp
+        main.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
