@@ -15,10 +15,10 @@ int main(int argc, char *argv[])
       app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit ()));
 
       // prepare the pipeline
-      GstElement *pipeline1 = gst_parse_launch ("playbin uri=file:///home/george/Videos/GOPR0137.MP4 video-sink=xvimagesink", nullptr);
-      GstElement *pipeline2 = gst_parse_launch ("playbin uri=file:///home/george/Videos/GOPR0152.MP4 video-sink=xvimagesink", nullptr);
-      GstElement *pipeline3 = gst_parse_launch ("playbin uri=file:///home/george/Videos/GOPR0160.MP4 video-sink=xvimagesink", nullptr);
-      GstElement *pipeline4 = gst_parse_launch ("playbin uri=file:///home/george/Videos/GOPR0183.MP4 video-sink=xvimagesink", nullptr);
+      GstElement *pipeline1 = gst_parse_launch ("playbin uri=rtsp://10.0.9.112/h264 video-sink=nveglglessink", nullptr);
+      GstElement *pipeline2 = gst_parse_launch ("playbin uri=rtsp://10.0.9.113:8554/0 video-sink=nveglglessink", nullptr);
+      GstElement *pipeline3 = gst_parse_launch ("playbin uri=rtsp://10.0.9.116/1/h264major video-sink=nveglglessink", nullptr);
+      GstElement *pipeline4 = gst_parse_launch ("playbin uri=rtsp://10.0.9.117:8554/0 video-sink=nveglglessink", nullptr);
 
       // prepare the ui
       gint w=640;
@@ -30,25 +30,25 @@ int main(int argc, char *argv[])
 
       // define the window1
       QVideoWidget w1(&window);
-      w1.setGeometry(0, 0,w, h);
+      w1.setGeometry(0, 0,w+w, h+h);
       w1.setAttribute(Qt::WA_NativeWindow, true);
       w1.show();
 
       // define the window2
       QVideoWidget w2(&window);
-      w2.setGeometry(w, 0, w, h);
+      w2.setGeometry(w, 0, w / 2, h / 2);
       w2.setAttribute(Qt::WA_NativeWindow, true);
       w2.show();
 
       // define the window3
       QVideoWidget w3(&window);
-      w3.setGeometry(0, h, w, h);
+      w3.setGeometry(0, h, w / 2, h / 2);
       w3.setAttribute(Qt::WA_NativeWindow, true);
       w3.show();
 
       // define the window2
       QVideoWidget w4(&window);
-      w4.setGeometry(w, h, w, h);
+      w4.setGeometry(0, 0, w, h);
       w4.setAttribute(Qt::WA_NativeWindow, true);
       w4.show();
 
